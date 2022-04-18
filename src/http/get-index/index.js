@@ -6,9 +6,9 @@ exports.handler = async function http( req ) {
 	<head>
 		<meta charset="utf-8">
 		<meta name="description" content="">
-		<link rel="icon" href="./favicon.ico">
+		<link rel="icon" href="/_static/favicon.ico">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		<meta name="theme-color" content="#26d175">
+		<meta name="theme-color" content="#454545">
 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
