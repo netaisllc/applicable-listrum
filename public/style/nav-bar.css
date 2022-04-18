@@ -1,0 +1,49 @@
+/* Nav-bar */
+.nav-bar {
+	background-color: var(--color-neutral-100);
+	border-top: 1px solid var(--color-neutral-200);
+	color: var(--color-black);
+	cursor: pointer;
+	display: flex;
+	height: 100%;
+	padding: 1.125rem 0 0.75rem;
+	width: 100%;
+}
+
+.nav-bar a {
+	text-decoration: none;
+}
+
+.nav-bar h5 {
+	color: var(--color-neutral-500);
+	font-size: var(--font-size-extra-small);
+	font-weight: 400;
+	line-height: var(--font-lineheight-extra-small);
+	letter-spacing: 0.02rem;
+	margin-top: 0.335rem;
+}
+
+.nav-bar .selected h5 {
+	color: var(--color-black);
+}
+
+.nav-bar .container-pill {
+	width: 64px;
+	height: 32px;
+	border-radius: 16px;
+}
+
+.nav-bar .selected .container-pill {
+	background-color: var(--color-neutral-300);
+}
+
+.nav-bar .container-destination {
+	cursor: pointer;
+	height: 100%;
+	width: 33%;
+}
+
+.nav-bar .destination {
+	height: 48px;
+	width: 100%;
+}

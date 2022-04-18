@@ -1,0 +1,16 @@
+{
+  "favicon.ico": "favicon-aacefe5ffe.ico",
+  "style/app.css": "style/app-990cc47ad0.css",
+  "style/drawer.css": "style/drawer-026a37bed6.css",
+  "style/nav-bar.css": "style/nav-bar-4b629b9ed9.css",
+  "style/top-bar.css": "style/top-bar-970770f714.css",
+  "svg/arrow_back.svg": "svg/arrow_back-d5f82069a7.svg",
+  "svg/checklists.svg": "svg/checklists-8612dc3875.svg",
+  "svg/checklists_active.svg": "svg/checklists_active-23da35894c.svg",
+  "svg/menu.svg": "svg/menu-fccafed94e.svg",
+  "svg/search.svg": "svg/search-9b62a48ddf.svg",
+  "svg/statistics.svg": "svg/statistics-1cbf7c568e.svg",
+  "svg/statistics_active.svg": "svg/statistics_active-75cecbc259.svg",
+  "svg/templates.svg": "svg/templates-f0ca98cea6.svg",
+  "svg/templates_active.svg": "svg/templates_active-1f9019b342.svg"
+}

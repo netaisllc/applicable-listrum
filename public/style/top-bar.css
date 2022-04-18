@@ -1,0 +1,27 @@
+/* Top app bar */
+.top-bar {
+	align-items: center;
+	background-color: var(--color-background);
+	color: var(--color-black);
+	display: flex;
+	height: 100%;
+	padding: 0.375rem var(--padding-page) 0;
+	width: 100%;
+}
+
+.top-bar.on-search {
+	padding: 0 var(--padding-page) 0;
+}
+
+.top-bar .container-title {
+	flex-grow: 1;
+	padding: 0 1rem;
+}
+
+.top-bar h2 {
+	font-weight: 400;
+}
+
+.top-bar img {
+	cursor: pointer;
+}

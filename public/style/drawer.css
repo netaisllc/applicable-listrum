@@ -1,0 +1,74 @@
+/* Drawer menu */
+.drawer {
+	background-color: var(--color-background);
+	cursor: pointer;
+	height: 100%;
+	left: -320px;
+	position: absolute;
+	top: 0;
+	width: 320px;
+	transition: left 300ms ease-in-out;
+	z-index: 600;
+}
+
+.drawer.open {
+	box-shadow: var(--box-shadow-bottom-sheet);
+	left: 0;
+}
+
+.drawer .container-drawer-heading {
+	border-bottom: 1px solid var(--color-neutral-100);
+	height: 4rem;
+}
+
+.drawer .container-drawer-heading,
+.drawer .container-drawer-items {
+	padding: 0.5rem 1rem;
+	width: 100%;
+}
+
+.drawer .container-item-group {
+	margin: 0 0 1.75rem;
+}
+
+.drawer .container-item-group h4 {
+	margin-bottom: 0.3335rem;
+}
+
+.drawer .container-item-group p,
+.drawer .container-item-group .item {
+	margin: 0.1rem;
+}
+
+.drawer .container-version {
+	align-self: end;
+	background-color: var(--color-neutral-100);
+	color: var(--color-neutral-500);
+	font-size: var(--font-size-extra-small);
+	line-height: var(--font-lineheight-extra-extra-small);
+	padding: 1rem;
+	width: 100%;
+}
+
+.drawer .layout-grid {
+	align-items: start;
+	display: grid;
+	gap: 0;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(2, auto) 1fr;
+	height: 100%;
+	width: 100%;
+}
+
+.drawer .item {
+	font-size: var(--font-size-small);
+	padding: 0.25rem 0.875rem;
+	border-radius: 0.25rem;
+	width: 100%;
+}
+
+.drawer .item.selected {
+	background-color: var(--color-primary-700);
+	color: white;
+	font-weight: var(--font-weight-semibold);
+}
