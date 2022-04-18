@@ -1,6 +1,9 @@
 @app
 applicable-listrum
 
+@aws
+runtime nodejs14.x
+
 @http
 get /
 get /checklists
