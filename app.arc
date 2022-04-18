@@ -1,7 +1,8 @@
 @app
-app-one
+applicable-listrum
 
 @static
+fingerprint true
 
 @http
 get /
