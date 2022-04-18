@@ -1,2 +1,0 @@
-# applicable-listrum
-Begin app
