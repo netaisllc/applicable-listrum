@@ -4,8 +4,8 @@ const smsCode = ( use_case ) => {
 	const action = `${ first }${ remainder }`;
 
 	return `
-		<div class="flx flc-column">
-			<h3>SMS Code</h3>
+		<div class="flx flx-column">
+			<h3>${ action }</h3>
 			<form hx-post="/authenticate">
 				<div class="flx aln-center jst-between">
 					<label>Verify code</label>

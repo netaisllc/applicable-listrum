@@ -2,14 +2,19 @@ const arc = require( '@architect/functions' );
 const stytch = require( "stytch" )
 
 const headers = require( '@architect/shared/headers' );
+
+// @Shared because many routes will need it.
 const { db, q } = require( '@architect/shared/datastore' );
 
+// Constructed here because only a few routes use it and we don't want to 
+// bloat all routes by @sharing it.
 const auth = new stytch.Client( {
 	project_id: process.env.STYTCH_PROJECT_ID,
 	secret: process.env.STYTCH_SECRET,
 	env: stytch.envs.test,
 } );
 
+// Optimistic redirect for success cases.
 const redirect_header = { 'HX-Redirect': '/verify' };
 
 const login = async ( req ) => {
