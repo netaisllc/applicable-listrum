@@ -1,4 +1,4 @@
-.arc-env
 .DS_Store
-node_modules
+.arc-env
 .env
+node_modules

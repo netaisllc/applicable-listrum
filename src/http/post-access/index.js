@@ -38,10 +38,14 @@ const login = async ( req ) => {
 
 	console.log( 'Stytch LoginOrCreate results:', results );
 
+	// Send ingress request id back
+	const session = { ingress_method_id: results.phone_id };
+
 	return {
-		statusCode: 200,
+		body: null,
 		headers: { ...headers, ...redirect_header },
-		body: null
+		session,
+		statusCode: 200
 	}
 }
 

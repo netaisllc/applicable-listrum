@@ -3,6 +3,9 @@ const headers = require( '@architect/shared/headers' );
 const SMSCode = require( '@architect/views/sms-code' );
 
 const handler = ( req ) => {
+	const use_case = 'login';
+	const ingress_method_id = req?.session?.ingress_method_id ?? '__no_ingress_method_id';
+
 	const body = `
 		<html lang="en">
 		<head>
@@ -30,7 +33,7 @@ const handler = ( req ) => {
 					<section class="app-animation"> 
 					
 					<main class="flx-centered">
-						${ SMSCode( 'login' ) }
+						${ SMSCode( use_case, ingress_method_id ) }
 					</main>
 					
 					</section>
