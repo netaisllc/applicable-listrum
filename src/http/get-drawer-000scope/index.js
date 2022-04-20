@@ -1,4 +1,4 @@
-let arc = require( '@architect/functions' );
+const arc = require( '@architect/functions' );
 const headers = require( '@architect/shared/headers' );
 const trigger_header = { 'HX-Trigger': 'drawer:open' };
 
