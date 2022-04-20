@@ -8,6 +8,10 @@ runtime nodejs14.x
 get /
 get /checklists
 get /drawer/:scope
+get /login
 get /statistics
 get /templates
 get /top-bar/:scope
+get /verify
+post /access
+post /authenticate
