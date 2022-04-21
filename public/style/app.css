@@ -1,10 +1,12 @@
 @import url('/_static/style/drawer.css');
 @import url('/_static/style/nav-bar.css');
 @import url('/_static/style/top-bar.css');
+@import url('/_static/style/button.css');
+@import url('/_static/style/input.css');
 
 :root {
-	--border-radius: 12px;
-	--border-radius-code-input: 10px;
+	--border-radius: 0.5rem;
+	--border-radius-small: 0.25rem;
 
 	--box-shadow-bottom-sheet: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12),
 		0 5px 5px -3px rgba(0, 0, 0, 0.2);
@@ -402,7 +404,7 @@ input[type='search'] {
 
 /* Utilities */
 a {
-	color: var(--color-primary-600);
+	color: var(--color-secondary-blue-700);
 }
 
 a.internal-link {
@@ -627,139 +629,90 @@ main {
 	position: relative;
 }
 
-/* App components */
-.search {
-	background: rgba(118, 118, 128, 0.12) url('/search.svg') no-repeat 8px center;
+/* Login, Signup pages */
+
+.access.layout-grid {
+	display: grid;
+	grid-gap: 0;
+	grid-template-columns: 1fr;
+	grid-template-rows: 33% auto 1fr;
+	width: 100%;
+	height: 100%;
 }
 
-/* Inputs */
-button.clear-value-icon {
-	background: transparent;
-	border: none;
-	height: 2.5rem;
-	position: absolute;
-	right: 0.5rem;
-	top: 0.5rem;
-	width: 1.5rem;
+.access main {
+	align-self: start;
+	background-color: var(--color-background);
+	padding: 0 1.5rem;
 }
 
-input {
-	-moz-appearance: none;
-	-webkit-appearance: none;
-	appearance: none;
-	background-color: var(--color-white);
-	border-radius: var(--border-radius);
-	border: 1px solid var(--color-neutral-100);
-	color: var(--color-neutral-900);
-	font-family: var(--font-family);
-	font-size: var(--font-size-small);
-	height: 3.5rem;
-	line-height: var(--font-lineheight-small);
-	margin: 0 auto;
-	outline: none;
-	padding: 1.125rem 0.75rem;
+.access .access-action {
+	padding: 1.5rem;
+}
+
+.access .access-action button {
+	margin-top: 1rem;
+}
+
+.access .access-action h2 {
+	margin-bottom: 1rem;
+}
+
+.access .container-guidance {
+	align-self: start;
+	background-color: var(--color-background);
+	height: 100%;
+	padding: 1.5rem 3rem;
 	width: 100%;
 }
 
-
-input:focus,
-input:focus-within,
-input:focus-visible {
-	border: 1px solid var(--color-primary-500) !important;
+.access .guidance {
+	background-color: var(--color-background-alt);
+	border-radius: var(--border-radius-small);
+	margin-bottom: 0.875rem;
+	padding: 0.75rem 1rem;
+	width: 100%;
 }
 
-input.error,
-input.error:focus,
-input.error:focus-within,
-input.error:focus-visible {
-	border: 1px solid var(--color-accent-500) !important;
-	color: var(--color-black);
-}
-
-input:focus~button.clear-value-icon,
-input~button.clear-value-icon:focus {
-	background: transparent url('/cancel.svg') center center no-repeat;
-	cursor: pointer;
-	z-index: 50;
-}
-
-input:focus+.placeholder-label,
-input:not(:placeholder-shown)+.placeholder-label {
-	background: var(--color-background);
-	color: var(--color-primary-500);
-	font-size: var(--font-size-extra-extra-small);
-	height: auto;
-	line-height: var(--font-size-extra-extra-small);
-	overflow: hidden;
-	padding: 0 0.35rem;
-	transform: translate(0, -1.5em);
-}
-
-input:not(:focus):not(:placeholder-shown)+.placeholder-label {
-	color: var(--color-neutral-400);
-}
-
-/* We'll keep this around for a few cycles. 3/2022.
-input:focus + .placeholder-label.error {
-	color: var(--color-primary-500);
-}
-*/
-
-input:focus+.placeholder-label.error,
-input:not(:placeholder-shown)+.placeholder-label.error {
-	color: var(--color-accent-500);
-}
-
-input[type='email']:disabled,
-input[type='tel']:disabled,
-input[type='text']:disabled,
-input[type='search']:disabled {
-	cursor: not-allowed;
-}
-
-.input-container {
-	max-width: var(--max-width-content);
-	position: relative;
-}
-
-.input-error-message {
-	color: var(--color-accent-500);
-	font-family: var(--font-family);
-	font-size: var(--font-size-extra-extra-small);
-	line-height: var(--font-size-extra-extra-small);
-	margin: 0.35rem 0 0 0;
-	max-width: var(--max-width-content);
-	padding: 0 0 0 0.25rem;
-	width: var(--width-full);
-}
-
-.placeholder-label {
-	color: var(--color-neutral-400);
+.access .guidance p {
+	color: var(--color-neutral-800);
 	font-size: var(--font-size-small);
-	height: 2rem;
-	left: 1em;
-	line-height: 2rem;
-	position: absolute;
-	top: 0.675rem;
-	transition-duration: 100ms;
-	transition-property: transform, color;
-	z-index: 10;
+	line-height: var(--font-lineheight-large);
 }
 
-.placeholder-label.error {
-	color: var(--color-accent-500);
+.access .guidance a {
+	font-size: var(--font-size-small);
+	line-height: var(--font-lineheight-base);
 }
 
-@media only screen and (min-width: 1280px) {
-
-	input[type='email']:disabled,
-	input[type='tel']:disabled,
-	input[type='text']:disabled,
-	input[type='search']:disabled {
-		color: var(--color-neutral-400);
-	}
+.access .hero {
+	align-items: end;
+	background-color: #101010;
+	background-image: url('/_static/svg/endless-constellation.svg');
+	background-position: center bottom;
+	display: grid;
+	height: 100%;
 }
 
+.access .headings {
+	padding: 0 2.5rem 1.5rem;
+}
+
+.access .jumbo {
+	color: white;
+	font-size: 3.333rem;
+	font-weight: 300;
+	line-height: 3.333rem;
+}
+
+.access .secondary {
+	color: var(--color-neutral-100);
+	font-size: var(--font-size-large);
+	font-weight: 400;
+	line-height: var(--font-lineheight-large);
+	margin-bottom: 0.25rem;
+	padding-left: 0.3333rem;
+}
 
 /* Viewport adjustments */
 @media only screen and (min-width: 600px) {

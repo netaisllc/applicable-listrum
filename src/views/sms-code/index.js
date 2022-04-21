@@ -5,17 +5,18 @@ const smsCode = ( use_case, ingress_method_id ) => {
 	const action = `${ first }${ remainder }`;
 
 	return `
-		<div class="flx flx-column">
-			<h3>Verify</h3>
+		<div class="access-action">
+			<h2>Verify</h2>
 			<form hx-post="/authenticate">
-				<div class="flx aln-center jst-between">
-					<label>Verify code</label>
-					<input autocomplete="one-time-code" inputmode="numeric" type="text" name="smscode" required="required" />
+				<div class="input-container">
+					<input autocomplete="one-time-code" id="access-sms-code" inputmode="numeric" type="text" name="smscode" placeholder=" " required="required" />					
+					<label class="placeholder-label" for="access-sms-code">Code</label>
+
 					<input class="hidden" type="text" name="ingress_method_id" value="${ ingress_method_id }" />
 				</div>
-				<button type="submit">${ action }</button>
+				<button class="primary" type="submit">${ action }</button>
 			</form>
-		</div>
+		</div>	
 	`;
 }
 

@@ -1,5 +1,8 @@
 const arc = require( '@architect/functions' );
 const headers = require( '@architect/shared/headers' );
+const NavBar = require( './navbar' );
+const TopBar = require( './topbar' );
+
 
 const handler = ( req ) => {
 	const body = `
@@ -27,18 +30,27 @@ const handler = ( req ) => {
 			<div class="full-page">
 				<div class="app-shell">
 					<section class="app-animation"> 
-					<header></header>
-					<main class="flx-centered">
-						<div class="flx flx-column">
-							<h1>Marketing Site Stand-in</h1>
-							<a href="/login" alt="Link to Login page" style="margin-top: 1rem;">Login</a>
-							<a href="https://app.ottopay.com" alt="Link to Signup page" style="margin-top: 1rem;">Signup</a>
-						</div>
-					</main>
-					<footer></footer>
+					<header>
+						${ TopBar() }
+					</header>
+					<main class="flx-centered">My Main</main>
+					<footer>
+						${ NavBar() }
+					</footer>
 					</section>
 				</div>
 			</div>
+
+			<!-- Surfaces -->
+			<section id="scrim" class="blurred-container dark scrim"></section>
+			<section 
+				id="drawer" 
+				class="drawer" 
+				
+				_="on drawer:open from body toggle .open on me then toggle .reveal on #scrim 
+				on drawer:close toggle .open on me then toggle .reveal on #scrim"
+			>
+			</section>	
 
 			<!-- Dependencies -->
 			<script src="https://unpkg.com/hyperscript.org@0.9.5"></script>

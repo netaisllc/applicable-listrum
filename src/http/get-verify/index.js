@@ -30,12 +30,24 @@ const handler = ( req ) => {
 			<!-- App -->
 			<div class="full-page">
 				<div class="app-shell">
-					<section class="app-animation"> 
+					<section class="access layout-grid">
+						<div class="hero">
+							<div class="headings">
+								<h4 class="secondary">Strongcloud</h4>
+								<h1 class="jumbo">Checklist</h1>
+							</div>
+						</div>
 					
-					<main class="flx-centered">
+						<main>
 						${ SMSCode( use_case, ingress_method_id ) }
-					</main>
-					
+						</main>
+
+						<div class="container-guidance">
+							<div class="guidance flx aln-center jst-between">
+								<p>Didn't receive the code?</p>
+								<p><a href="https://app.ottopay.com">Send another code</a></p>
+							</div>
+						</div>
 					</section>
 				</div>
 			</div>			

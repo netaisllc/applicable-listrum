@@ -6,6 +6,7 @@ runtime nodejs14.x
 
 @http
 get /
+get /app
 get /checklists
 get /drawer/:scope
 get /login

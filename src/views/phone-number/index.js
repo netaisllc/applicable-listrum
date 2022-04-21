@@ -4,16 +4,16 @@ const phoneNumber = ( use_case ) => {
 	const action = `${ first }${ remainder }`;
 
 	return `
-		<div class="flx flx-column">
-			<h3>${ action }</h3>
+		<div class="access-action">
+			<h2>${ action }</h2>
 			<form hx-post="/access">
-				<div class="flx aln-center jst-between">
-					<label>Phone number</label>
-					<input autocomplete="tel" inputmode="tel" type="text" name="phonenumber" required="required" />
+				<div class="input-container">
+					<input autocomplete="tel" id="access-phone-number" inputmode="tel" type="text" name="phonenumber" placeholder=" " required="required" />
+					<label class="placeholder-label" for="access-phone-number">Phone number</label>
 				</div>
-				<button type="submit">${ action }</button>
+				<button class="primary" type="submit">Continue</button>
 			</form>
-		</div>		
+		</div>	
 	`;
 }
 

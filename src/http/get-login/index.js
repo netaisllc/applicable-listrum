@@ -27,15 +27,30 @@ const handler = ( req ) => {
 			<!-- App -->
 			<div class="full-page">
 				<div class="app-shell">
-					<section class="app-animation"> 
+					<section class="access layout-grid">
+						<div class="hero">
+							<div class="headings">
+								<h4 class="secondary">Strongcloud</h4>
+								<h1 class="jumbo">Checklist</h1>
+							</div>
+						</div>
 					
-					<main class="flx-centered">
-						${ PhoneNumberForm( 'login' ) }
-					</main>
-					
+						<main>
+							${ PhoneNumberForm( 'login with phone' ) }
+						</main>
+
+						<div class="container-guidance">
+							<div class="guidance">
+								<a href="https://app.ottopay.com">Login with email</a>
+							</div>
+							<div class="guidance">
+								<p>Need an account?</p>
+								<p>Use our <a href="https://app.ottopay.com">passwordless signup</a> to get one.</p>
+							</div>
+						</div>
 					</section>
 				</div>
-			</div>			
+			</div>	
 
 			<!-- Dependencies -->
 			<script src="https://unpkg.com/hyperscript.org@0.9.5"></script>

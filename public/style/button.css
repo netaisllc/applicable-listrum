@@ -1,0 +1,16 @@
+/* Buttons */
+button {
+	border: 1px solid transparent;
+	border-radius: var(--border-radius-small);
+	height: 3rem;
+	line-height: 3.1rem;
+	margin: 0 auto;
+	padding: 0 0.5em;
+	width: 100%;
+}
+
+button.primary {
+	background-color: var(--color-secondary-blue-800);
+	color: white;
+	font-size: var(--font-size-large);
+}

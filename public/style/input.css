@@ -1,0 +1,67 @@
+/* Inputs */
+.input-container {
+	position: relative;
+}
+
+input {
+	border: 1px solid #d9d9d9;
+	border-radius: var(--border-radius-small);
+	color: var(--color-black);
+	height: 3rem;
+	line-height: 3.1rem;
+	margin: 0 auto;
+	outline: none;
+	padding: 0 0.5em;
+	width: 100%;
+}
+
+input.error {
+	border: 1px solid var(--color-accent-600);
+	border-radius: var(--border-radius-small);
+	color: var(--color-accent-600);
+}
+
+input:focus,
+input:focus-within,
+input:focus-visible {
+	border-color: 1px solid var(--color-neutral-500);
+	border-radius: var(--border-radius-small);
+}
+
+.placeholder-label {
+	color: var(--color-neutral-200);
+	height: 2rem;
+	left: 1em;
+	line-height: 2rem;
+	position: absolute;
+	top: 0.5rem;
+	transition-duration: 100ms;
+	transition-property: transform, color;
+	z-index: 10;
+}
+
+input:focus+.placeholder-label,
+input:not(:placeholder-shown)+.placeholder-label {
+	background: var(--color-background);
+	color: var(--color-black);
+	font-size: 75%;
+	height: auto;
+	line-height: 1rem;
+	overflow: hidden;
+	padding: 0 0.75em;
+	transform: translate(0, -1.333em);
+}
+
+input:not(:focus):not(:placeholder-shown)+.placeholder-label {
+	color: var(--color-neutral-200);
+}
+
+@media only screen and (min-width: 1280px) {
+
+	input[type='email']:disabled,
+	input[type='tel']:disabled,
+	input[type='text']:disabled,
+	input[type='search']:disabled {
+		color: var(--color-neutral-400);
+	}
+}
