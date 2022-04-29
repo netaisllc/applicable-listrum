@@ -2,6 +2,7 @@
 button {
 	border: 1px solid transparent;
 	border-radius: var(--border-radius-small);
+	cursor: pointer;
 	height: 3rem;
 	line-height: 3.1rem;
 	margin: 0 auto;

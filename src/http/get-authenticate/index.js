@@ -7,7 +7,7 @@ const headers = require( '@architect/shared/headers' );
 const { db, q } = require( '@architect/shared/datastore' );
 
 // Optimistic redirect for success cases.
-const redirect_header = { 'HX-Redirect': '/app' };
+const redirect_header = { location: '/app' };
 
 // Constructed here because only a few routes use it and we don't want to 
 // bloat all routes by @sharing it.
@@ -22,22 +22,14 @@ const duration = () => {
 }
 
 const verify = async ( req ) => {
-	console.log( 'Authenticate route received:', req?.body?.smscode, req?.body?.ingress_method_id )
+	console.log( 'Authenticate route received:', req?.query?.token )
 
 	// Call STYTCH authenticate
-	const params = {
-		method_id: req?.body?.ingress_method_id,
-		code: req?.body?.smscode,
-		session_duration_minutes: duration()
-	};
-
-	// TODO Handle STYTCH call failure
-
-	results = await auth.otps.authenticate( params );
+	results = await auth.magicLinks.authenticate( req?.query?.token, { session_duration_minutes: duration() } )
 
 	console.log( 'STYTCH authenticate results', results )
 
-	// Store some STYTCH results
+	/// Store some STYTCH results
 	const { user_id, session_token } = results;
 	const session_id = results?.session?.session_id;
 	const session_started_at = results?.session?.started_at;
@@ -48,7 +40,7 @@ const verify = async ( req ) => {
 
 	// TODO Handle db query error
 
-	console.log( 'FAUNA account login results', db_result )
+	console.log( 'FAUNA login/session results', db_result )
 
 	// Store some db results
 	const account_name = db_result?.data?.name ?? '';
@@ -69,14 +61,13 @@ const verify = async ( req ) => {
 
 	console.log( 'BEGIN SESSION object', session )
 
-	// redirect to protected page using begin method? (later)
-
+	// Redirect to protected page
 	return {
-		statusCode: 200,
+		statusCode: 307,
 		headers: { ...headers, ...redirect_header },
 		body: null,
 		session
 	}
 }
 
-exports.handler = arc.http.async( verify )
+exports.handler = arc.http.async( verify );

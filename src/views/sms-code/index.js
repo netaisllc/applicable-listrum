@@ -1,11 +1,10 @@
 const smsCode = ( use_case, ingress_method_id ) => {
-
 	const first = use_case.charAt( 0 ).toUpperCase();
 	const remainder = use_case.slice( 1 );
 	const action = `${ first }${ remainder }`;
 
 	return `
-		<div class="access-action">
+		<div class="access-action animate__animated animate__fadeIn">
 			<h2>Verify</h2>
 			<form hx-post="/authenticate">
 				<div class="input-container">

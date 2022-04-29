@@ -6,12 +6,12 @@
 		"start": "npx sandbox"
 	},
 	"devDependencies": {
-		"@architect/architect": "^10.3.0",
-		"@architect/sandbox": "^5.2.3"
+		"@architect/architect": "^10.3.1",
+		"@architect/sandbox": "^5.2.4"
 	},
 	"dependencies": {
 		"@architect/functions": "^5.1.0",
 		"faunadb": "^4.5.4",
-		"stytch": "^3.13.1"
+		"stytch": "^4.0.0"
 	}
 }

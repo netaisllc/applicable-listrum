@@ -1,19 +1,15 @@
 const arc = require( '@architect/functions' );
 const headers = require( '@architect/shared/headers' );
 
-const Dependencies = require( '@architect/views/dependencies' )
-const Head = require( '@architect/views/head' )
-const SMSCodeForm = require( '@architect/views/sms-code' );
+const Dependencies = require( '@architect/views/dependencies' );
+const Head = require( '@architect/views/head' );
 const { HtmlOpen, HtmlClose } = require( '@architect/views/html' );
 
 const handler = ( req ) => {
-	const use_case = 'login';
-	const ingress_method_id = req?.session?.ingress_method_id ?? '__no_ingress_method_id';
-
 	const body = `
 		${ HtmlOpen() }
 		${ Head() }
-				
+		
 		<body>
 			<!-- App -->
 			<div class="full-page">
@@ -26,22 +22,23 @@ const handler = ( req ) => {
 							</div>
 						</div>
 					
-						<main>
-						${ SMSCodeForm( use_case, ingress_method_id ) }
+						<main class="flx jst-center">
+							<div class="container-wait-for-magic-link flx-centered">
+								<div>
+									<h4>Check your email for a magic link.</h4>
+									<p>Click the magic link to access the app, then close this window.</p>
+								</div>
+							</div>
 						</main>
 
-						<div class="container-guidance">
-							<div class="guidance flx aln-center jst-between">
-								<p>Didn't receive the code?</p>
-								<p><a href="https://app.ottopay.com">Send another code</a></p>
-							</div>
-						</div>
+						<div class="container-guidance"></div>
+						
 					</section>
 				</div>
-			</div>
+			</div>	
+
 			${ Dependencies() }
-			
-		</body>
+		</body>	
 		${ HtmlClose() }
 	`;
 

@@ -1,19 +1,17 @@
 const arc = require( '@architect/functions' );
 const headers = require( '@architect/shared/headers' );
+const trigger_header = { 'HX-Trigger': 'login:phone' };
 
-const Dependencies = require( '@architect/views/dependencies' )
-const Head = require( '@architect/views/head' )
-const SMSCodeForm = require( '@architect/views/sms-code' );
+const Access = require( '@architect/views/access' );
+const Dependencies = require( '@architect/views/dependencies' );
+const Head = require( '@architect/views/head' );
 const { HtmlOpen, HtmlClose } = require( '@architect/views/html' );
 
 const handler = ( req ) => {
-	const use_case = 'login';
-	const ingress_method_id = req?.session?.ingress_method_id ?? '__no_ingress_method_id';
-
 	const body = `
 		${ HtmlOpen() }
 		${ Head() }
-				
+		
 		<body>
 			<!-- App -->
 			<div class="full-page">
@@ -25,29 +23,30 @@ const handler = ( req ) => {
 								<h1 class="jumbo">Checklist</h1>
 							</div>
 						</div>
-					
-						<main>
-						${ SMSCodeForm( use_case, ingress_method_id ) }
-						</main>
+
+						${ Access( 'signup' ) }
 
 						<div class="container-guidance">
-							<div class="guidance flx aln-center jst-between">
-								<p>Didn't receive the code?</p>
-								<p><a href="https://app.ottopay.com">Send another code</a></p>
+							<div class="guidance">
+								<a href="#" hx-get="/access-scenario?access=signup&method=email" hx-swap="outerHTML">Signup with email</a>
+							</div>
+							<div class="guidance">
+								<p>Already have an account?</p>
+								<p>Use our <a href="/login">passwordless login</a> to get back to work.</p>
 							</div>
 						</div>
 					</section>
 				</div>
-			</div>
+			</div>	
+
 			${ Dependencies() }
-			
-		</body>
+		</body>	
 		${ HtmlClose() }
 	`;
 
 	return {
 		statusCode: 200,
-		headers,
+		headers: { ...headers, ...trigger_header },
 		body
 	}
 }

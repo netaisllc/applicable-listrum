@@ -1,8 +1,8 @@
+@import url('/_static/style/button.css');
 @import url('/_static/style/drawer.css');
+@import url('/_static/style/input.css');
 @import url('/_static/style/nav-bar.css');
 @import url('/_static/style/top-bar.css');
-@import url('/_static/style/button.css');
-@import url('/_static/style/input.css');
 
 :root {
 	--border-radius: 0.5rem;
@@ -405,6 +405,7 @@ input[type='search'] {
 /* Utilities */
 a {
 	color: var(--color-secondary-blue-700);
+	cursor: pointer;
 }
 
 a.internal-link {
@@ -635,7 +636,7 @@ main {
 	display: grid;
 	grid-gap: 0;
 	grid-template-columns: 1fr;
-	grid-template-rows: 33% auto 1fr;
+	grid-template-rows: 1fr 11rem 1fr;
 	width: 100%;
 	height: 100%;
 }
@@ -698,6 +699,12 @@ main {
 	padding: 0 2.5rem 1.5rem;
 }
 
+.access .infill {
+	background-color: var(--color-background-alt);
+	height: 1rem;
+	width: 100%;
+}
+
 .access .jumbo {
 	color: white;
 	font-size: 3.333rem;
@@ -712,6 +719,28 @@ main {
 	line-height: var(--font-lineheight-large);
 	margin-bottom: 0.25rem;
 	padding-left: 0.3333rem;
+}
+
+.container-wait-for-magic-link {
+	background-color: var(--color-background-alt);
+	border-radius: var(--border-radius-small);
+	height: 7rem;
+	margin: 1.5rem 0 0;
+	padding: 1.5rem;
+	width: 100%;
+}
+
+.container-wait-for-magic-link h4 {
+	color: var(--color-black);
+	margin-bottom: 1rem;
+	text-align: center;
+}
+
+.container-wait-for-magic-link p {
+	color: var(--color-neutral-700);
+	font-size: var(--font-size-small);
+	line-height: var(--font-lineheight-base);
+	text-align: center;
 }
 
 /* Viewport adjustments */
