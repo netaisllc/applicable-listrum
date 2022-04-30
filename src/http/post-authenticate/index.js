@@ -1,5 +1,5 @@
 const arc = require( '@architect/functions' );
-const stytch = require( "stytch" )
+const stytch = require( "stytch" );
 
 const headers = require( '@architect/shared/headers' );
 

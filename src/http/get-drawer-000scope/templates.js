@@ -36,8 +36,10 @@ const templates = () => {
 			</div>
 
 			<div class="container-item-group single">
-				<h4 class="strong wt-semibold">Logout</h4>
-			</div>		
+				<h4 class="strong wt-semibold">
+					<a href="/logout" title="Logout link">Logout</a>
+				</h4>
+			</div>	
 		</div>
 
 		<div class="container-version">

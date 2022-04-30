@@ -13,6 +13,7 @@ get /check-email
 get /checklists
 get /drawer/:scope
 get /login
+get /logout
 get /signup
 get /statistics
 get /templates
