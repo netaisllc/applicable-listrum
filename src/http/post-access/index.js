@@ -1,5 +1,5 @@
 const arc = require( '@architect/functions' );
-const stytch = require( "stytch" )
+const stytch = require( "stytch" );
 
 const headers = require( '@architect/shared/headers' );
 
@@ -10,6 +10,8 @@ const with_email_redirect_header = { 'HX-Redirect': '/check-email' };
 // @Shared because many routes will need it.
 const { db, q } = require( '@architect/shared/datastore' );
 
+const debug = process.env.DEBUG_MODE === 'true';
+
 // Constructed here because only a few routes use it and we don't want to 
 // bloat all routes by @sharing it.
 const auth = new stytch.Client( {
@@ -17,6 +19,24 @@ const auth = new stytch.Client( {
 	secret: process.env.STYTCH_SECRET,
 	env: stytch.envs.test,
 } );
+
+const accessPathInvalid = ( options ) => {
+	const use_case = {
+		conflict: {
+			task: 'login',
+			channel: 'phone',
+			value: options.phone
+		}
+	}
+
+	const conflict_trigger = { 'HX-Trigger': JSON.stringify( use_case ) }
+
+	return {
+		statusCode: 200,
+		headers: { ...headers, ...conflict_trigger },
+		body: null
+	}
+}
 
 const accessWithEmail = async ( email_address, task ) => {
 	const isLogin = task === 'login' ? true : false;
@@ -72,20 +92,27 @@ const accessWithPhone = async ( phone_number, task ) => {
 	const isLogin = task === 'login' ? true : false;
 	const isSignup = task === 'signup' ? true : false;
 
+	const options = {
+		phone: phone_number,
+		task
+	}
+
 	const exists = await db.query( q.Call( 'AccountExistsByPhone', phone_number ) );
 
 	// Handle Fauna call failure here
 
-	console.log( 'FAUNA Exists check results:', exists );
+	if ( debug ) console.log( 'FAUNA Exists check results:', exists );
 
 	if ( isLogin && !exists ) {
-		// TODO handle this more + clientside
-		console.log( 'ERROR, Login requires phone number to exist but it does not', phone_number );
+		if ( debug ) console.log( 'ERROR, Login requires phone number to exist but it does not', phone_number );
+
+		return accessPathInvalid( options );
 	}
 
 	if ( isSignup && exists ) {
-		// TODO handle this more + clientside
-		console.log( 'ERROR, Signup requires phone_number to be available but it is already in use', phone_number );
+		if ( debug ) console.log( 'ERROR, Signup requires phone_number to be available but it is already in use', phone_number );
+
+		return accessPathInvalid( options );
 	}
 
 	const params = { phone_number };
@@ -102,7 +129,7 @@ const accessWithPhone = async ( phone_number, task ) => {
 		// placehold for props we dont have yet
 		const db_results = await db.query( q.Call( 'AccountCreate', results.user_id, nil, nil, nil, phone_number ) );
 
-		console.log( 'FAUNA AccountCreate results:', db_results );
+		if ( debug ) console.log( 'FAUNA AccountCreate results:', db_results );
 	}
 
 	// Send back ingress request id
@@ -123,7 +150,7 @@ const loginOrSignup = async ( req ) => {
 
 	const withEmail = email_address && phone_number.includes( '__no' ) ? true : false;
 
-	console.log( 'Access route received:', task, email_address, phone_number );
+	if ( debug ) console.log( 'Access route received (task, email_address, phone_number):', task, email_address, phone_number );
 
 	if ( withEmail ) {
 		return await accessWithEmail( email_address, task );
@@ -133,7 +160,7 @@ const loginOrSignup = async ( req ) => {
 		return await accessWithPhone( phone_number, task );
 	}
 
-	console.log( 'ERROR: unknown use case', task, email_address, phone_number );
+	if ( debug ) console.log( 'ERROR: unknown use case', task, email_address, phone_number );
 
 	return {
 		statusCode: 500

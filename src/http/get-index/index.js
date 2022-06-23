@@ -33,8 +33,6 @@ const handler = ( req ) => {
 		${ HtmlClose() }
 	`;
 
-	console.log( req.session )
-
 	return {
 		statusCode: 200,
 		headers,

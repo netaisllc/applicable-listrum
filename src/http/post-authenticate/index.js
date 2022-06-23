@@ -27,8 +27,7 @@ const verify = async ( req ) => {
 	// Call STYTCH authenticate
 	const params = {
 		method_id: req?.body?.ingress_method_id,
-		code: req?.body?.smscode,
-		session_duration_minutes: duration()
+		code: req?.body?.smscode
 	};
 
 	// TODO Handle STYTCH call failure
@@ -38,13 +37,11 @@ const verify = async ( req ) => {
 	console.log( 'STYTCH authenticate results', results )
 
 	// Store some STYTCH results
-	const { user_id, session_token } = results;
-	const session_id = results?.session?.session_id;
-	const session_started_at = results?.session?.started_at;
-	const session_expires_at = results?.session?.expires_at;
+	const { user_id } = results;
+	const session_started_at = Date.now();
 
 	// login to datastore to get account props and db token
-	const db_result = await db.query( q.Call( 'AccountLogin', user_id, session_started_at, session_expires_at ) );
+	const db_result = await db.query( q.Call( 'AccountLogin', user_id, session_started_at ) );
 
 	// TODO Handle db query error
 
@@ -61,9 +58,6 @@ const verify = async ( req ) => {
 		account_name,
 		db_token,
 		organization,
-		session_id,
-		session_token,
-		session_expires_at,
 		user_id
 	}
 

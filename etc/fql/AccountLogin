@@ -1,0 +1,29 @@
+Query(
+	Lambda(
+		[ "auth_id", "session_started_at" ],
+		Let(
+			{
+				account: Call( Function( "AccountGetByAuthId" ), Var( "auth_id" ) ),
+				email_address: Select( [ "data", "email_address" ], Var( "account" ) ),
+				name: Select( [ "data", "name" ], Var( "account" ) ),
+				organization: Select( [ "data", "organization" ], Var( "account" ) ),
+				phone_number: Select( [ "data", "phone_number" ], Var( "account" ) ),
+				session_started_at: Var( "session_started_at" ),
+				tokenRef: Call( Function( "AccountGetDBToken" ), Var( "auth_id" ) ),
+				secret: Select( "secret", Var( "tokenRef" ) )
+			},
+			Create( Collection( "Sessions" ), {
+				data: {
+					auth_id: Var( "auth_id" ),
+					email_address: Var( "email_address" ),
+					live: true,
+					name: Var( "name" ),
+					organization: Var( "organization" ),
+					phone_number: Var( "phone_number" ),
+					secret: Var( "secret" ),
+					session_started_at: Var( "session_started_at" )
+				}
+			} )
+		)
+	)
+)

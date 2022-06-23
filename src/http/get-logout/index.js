@@ -8,6 +8,7 @@ const { db, q } = require( '@architect/shared/datastore' );
 
 const Dependencies = require( '@architect/views/dependencies' );
 const Head = require( '@architect/views/head' );
+const guard = require( '@architect/views/guard' );
 const { HtmlOpen, HtmlClose } = require( '@architect/views/html' );
 
 // Constructed here because only a few routes use it and we don't want to 
@@ -42,6 +43,7 @@ const handler = async ( req ) => {
 									<p>Thank you for using Strongcloud Checklist.</p>
 									<p>Don't forget to close this tab (or your browser).</p>
 								</div>
+								<a href="/login">Login</a>
 							</div>
 						</main>
 
@@ -58,20 +60,18 @@ const handler = async ( req ) => {
 
 	const auth_id = req?.session?.user_id ?? '__no_auth_id';
 	const db_token = req?.session?.db_token ?? '__no_db_token';
-	const session_id = req?.session?.session_id ?? '__no_session_id';
 
 	const customerClient = new faunadb.Client( { secret: db_token } );
 
-	console.log( 'AuthId', auth_id, 'DBToken', db_token, 'SessionId', session_id );
+	console.log( 'AuthId', auth_id, 'DBToken', db_token );
 
 	try {
 		const results = await Promise.all( [
 			customerClient.query( q.Logout( true ) ),
-			db.query( q.Call( 'SessionEnd', db_token, auth_id ) ),
-			auth.sessions.revoke( { session_id } )
+			db.query( q.Call( 'SessionEnd', db_token, auth_id ) )
 		] );
 
-		console.log( 'LOGOUT multiple promise results', results );
+		console.log( 'LOGOUT results: Fauna session, Strongcloud session', results );
 
 		// Clear session cookie
 		const session = {};
@@ -94,4 +94,4 @@ const handler = async ( req ) => {
 	}
 }
 
-exports.handler = arc.http.async( handler )
+exports.handler = arc.http.async( guard, handler )

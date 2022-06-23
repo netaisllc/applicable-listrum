@@ -1,7 +1,7 @@
-const EmailAddressForm = require( './email-address' );
-const PhoneNumberForm = require( './phone-number' );
+const EmailAddressForm = require( '../email-address' );
+const PhoneNumberForm = require( '../phone-number' );
 
-const access = ( use_case ) => {
+const form = ( use_case ) => {
 	const with_email = `${ use_case } with email`;
 	const with_phone = `${ use_case } with phone`;
 
@@ -24,8 +24,8 @@ const access = ( use_case ) => {
 			>
 				${ EmailAddressForm( with_email ) }
 			</div>
-	</main>
+		</main>
 	`;
 }
 
-module.exports = access;
+module.exports = form;

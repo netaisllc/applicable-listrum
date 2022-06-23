@@ -5,7 +5,7 @@ const navbar = () => {
 			class="nav-bar" 
 			hx-get="/templates" 
 			hx-target="#nav-bar"
-			hx-trigger="load after:100ms"
+			hx-trigger="load delay:100ms"
 			id="nav-bar" 
 		>
 		</div>

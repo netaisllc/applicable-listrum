@@ -1,0 +1,73 @@
+/* Modals */
+
+.modal {
+	align-content: center;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr auto 1fr;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 1000;
+}
+
+.modal-body {
+	background-color: var(--color-background);
+	box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 8px;
+	grid-row: 2;
+	justify-self: center;
+	max-width: 30rem;
+	width: 100%;
+}
+
+.modal-body button {
+	background-color: var(--color-background);
+	border: 2px solid #B22222;
+	color: #121212;
+	cursor: pointer;
+	font-weight: var(--font-weight-medium);
+	width: 33%;
+}
+
+.modal-body h2 {
+	background-color: #B22222;
+	color: white;
+	margin-bottom: 1rem;
+	padding: 0.675rem 1rem;
+	width: 100%;
+}
+
+.modal-body .content {
+	padding: 0.335rem 1rem;
+}
+
+.modal-body .content p {
+	line-height: var(--font-lineheight-large);
+	margin-bottom: 0.25rem;
+}
+
+.modal-body .content p:last-of-type {
+	margin-bottom: 1rem;
+}
+
+.modal-body .container-command {
+	margin-bottom: 1rem;
+}
+
+.login .modal-body-login-phone {
+	display: block;
+}
+
+.login .modal-body-signup-phone {
+	display: none;
+}
+
+.signup .modal-body-login-phone {
+	display: none;
+}
+
+.signup .modal-body-signup-phone {
+	display: block;
+}

@@ -1,6 +1,7 @@
 @import url('/_static/style/button.css');
 @import url('/_static/style/drawer.css');
 @import url('/_static/style/input.css');
+@import url('/_static/style/modal.css');
 @import url('/_static/style/nav-bar.css');
 @import url('/_static/style/top-bar.css');
 
@@ -39,16 +40,16 @@
 	--color-neutral-800: #2e342e;
 	--color-neutral-900: #1c231c;
 
-	--color-primary-050: #f5fbfa;
-	--color-primary-100: #d7f5e7;
-	--color-primary-200: #b9efd4;
-	--color-primary-300: #92e7ba;
-	--color-primary-400: #60dd9a;
-	--color-primary-500: #26d175;
-	--color-primary-600: #21b867;
-	--color-primary-700: #1da25b;
-	--color-primary-800: #18864c;
-	--color-primary-900: #14693b;
+	--color-primary-050: #e3f0fb;
+	--color-primary-100: #b6d7f4;
+	--color-primary-200: #88beed;
+	--color-primary-300: #5ba6e7;
+	--color-primary-400: #2d8dea;
+	--color-primary-500: #0074d9;
+	--color-primary-600: #0066c0;
+	--color-primary-700: #0059a6;
+	--color-primary-800: #004b8d;
+	--color-primary-900: #003d74;
 
 	--color-secondary-blue-050: #f7f9ff;
 	--color-secondary-blue-100: #e3edff;
@@ -147,6 +148,13 @@
 	--z-index-footer: 400;
 	--z-index-header: 400;
 	--z-index-scrim: 500;
+}
+
+/* Animation overrides */
+
+.animate__animated.animate__zoomIn,
+.animate__animated.animate__zoomOut {
+	--animate-duration: 250ms;
 }
 
 /*
@@ -404,7 +412,7 @@ input[type='search'] {
 
 /* Utilities */
 a {
-	color: var(--color-secondary-blue-700);
+	color: var(--color-primary-600);
 	cursor: pointer;
 }
 
@@ -614,7 +622,6 @@ main {
 	margin: 0 auto;
 	max-width: var(--max-width-page);
 	padding: calc(var(--height-header) + var(--padding-page)) var(--padding-page) calc(var(--height-footer) + var(--padding-page));
-	transition: padding 300ms ease-in-out;
 	width: 100%;
 }
 
@@ -636,7 +643,7 @@ main {
 	display: grid;
 	grid-gap: 0;
 	grid-template-columns: 1fr;
-	grid-template-rows: 1fr 11rem 1fr;
+	grid-template-rows: 30% 13.335rem 1fr;
 	width: 100%;
 	height: 100%;
 }
@@ -663,7 +670,7 @@ main {
 	align-self: start;
 	background-color: var(--color-background);
 	height: 100%;
-	padding: 1.5rem 3rem;
+	padding: 0 3rem 1.5rem;
 	width: 100%;
 }
 
@@ -688,9 +695,7 @@ main {
 
 .access .hero {
 	align-items: end;
-	background-color: #101010;
-	background-image: url('/_static/svg/endless-constellation.svg');
-	background-position: center bottom;
+	background-color: var(--color-neutral-900);
 	display: grid;
 	height: 100%;
 }

@@ -5,7 +5,9 @@ const Dependencies = require( '@architect/views/dependencies' )
 const Head = require( '@architect/views/head' )
 const NavBar = require( './navbar' );
 const TopBar = require( './topbar' );
+const guard = require( '@architect/views/guard' );
 const { HtmlOpen, HtmlClose } = require( '@architect/views/html' );
+
 
 const handler = ( req ) => {
 	const body = `
@@ -32,8 +34,7 @@ const handler = ( req ) => {
 			<section id="scrim" class="blurred-container dark scrim"></section>
 			<section 
 				id="drawer" 
-				class="drawer" 
-				
+				class="drawer"
 				_="on drawer:open from body toggle .open on me then toggle .reveal on #scrim 
 				on drawer:close toggle .open on me then toggle .reveal on #scrim"
 			>
@@ -51,4 +52,4 @@ const handler = ( req ) => {
 	}
 }
 
-exports.handler = arc.http.async( handler )
+exports.handler = arc.http.async( guard, handler )

@@ -53,8 +53,6 @@ const handler = async = ( req ) => {
 	const isLogin = req?.query?.access === 'login';
 	const withPhone = req?.query?.method === 'phone';
 
-	console.log( 'IsLogin', isLogin, 'WithPhone', withPhone );
-
 	return {
 		statusCode: 200,
 		headers: setHeaders( isLogin, withPhone ),

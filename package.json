@@ -1,17 +1,17 @@
 {
 	"name": "applicable-listrum",
 	"version": "0.0.0",
-	"description": "POC - Begin implementation of HHOBAA stack",
+	"description": "POC - HOBAA stack",
 	"scripts": {
 		"start": "npx sandbox"
 	},
 	"devDependencies": {
-		"@architect/architect": "^10.3.1",
-		"@architect/sandbox": "^5.2.4"
+		"@architect/architect": "^10.3.3",
+		"@architect/sandbox": "^5.2.5"
 	},
 	"dependencies": {
 		"@architect/functions": "^5.1.0",
-		"faunadb": "^4.5.4",
-		"stytch": "^4.0.0"
+		"faunadb": "^4.6.0",
+		"stytch": "^5.3.0"
 	}
 }

@@ -11,7 +11,7 @@ button {
 }
 
 button.primary {
-	background-color: var(--color-secondary-blue-800);
+	background-color: var(--color-primary-500);
 	color: white;
 	font-size: var(--font-size-large);
 }
